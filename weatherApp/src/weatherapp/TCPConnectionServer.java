@@ -33,13 +33,20 @@ public class TCPConnectionServer
         outMessageStream.flush();
     }
     
-    public void recieveMessage() throws IOException
+    public String recieveMessage() throws IOException
     {
         String recievedMessage = inMessage.readLine();
         if(recievedMessage != null)
         {
-            System.out.println("The following message was send by Client " + clientName + " :\n" + recievedMessage); 
+            System.out.println("The following message was send by Client " + clientName + " :\n" + recievedMessage);
+            if(TcpServer.weatherData.containsKey(recievedMessage))
+            {
+                return TcpServer.weatherData.get(recievedMessage);
+            }
+            
+            
         }
+        return "NULL";
             
     }
     

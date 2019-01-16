@@ -23,13 +23,13 @@ public class TcpClient
     
     public void sendMessage() throws IOException
     {
-        System.out.println("Please enter a message below:");
+        System.out.println("Please enter a valid city:");
         BufferedReader messageToSend = new BufferedReader(new InputStreamReader(System.in));
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
         BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         String message = messageToSend.readLine();
         outToServer.writeBytes(message + '\n');
-        System.out.println("FROM SERVER: " + inFromServer.readLine());
+        System.out.println("WEATHER STATUS: "  + inFromServer.readLine());
     }
     
     

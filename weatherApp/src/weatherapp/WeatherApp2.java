@@ -14,9 +14,9 @@ public class WeatherApp2 {
     {
         try{
             TcpClient client1 = new TcpClient(50000,"one");
-            //TcpClient client2 = new TcpClient(50000,"two");
+            TcpClient client2 = new TcpClient(50000,"two");
             client1.sendMessage();
-            //client2.sendMessage();
+            client2.sendMessage();
             client1.sendMessage();
             
         }catch(Exception ex)

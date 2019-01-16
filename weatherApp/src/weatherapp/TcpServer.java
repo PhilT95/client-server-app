@@ -4,6 +4,8 @@ package weatherapp;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Random;
 /**
  *
  * @author phil
@@ -14,12 +16,18 @@ public class TcpServer
     ServerSocket serverSocket;
     String servername;
     private int IDCounter = 0;
+    public static HashMap<String, String> weatherData = new HashMap<String,String>();
     
     public TcpServer(int port, String name) throws Exception
     {
         this.port = port;
         this.servername = name;
-        this.serverSocket = new ServerSocket(port); 
+        this.serverSocket = new ServerSocket(port);
+        weatherData.put("Amsterdam", getRngWeather());
+        weatherData.put("Berlin", getRngWeather());
+        weatherData.put("Gummersbach", getRngWeather());
+        weatherData.put("New York", getRngWeather());
+        weatherData.put("Peking", getRngWeather());       
         startServer();
        
     }
@@ -46,6 +54,20 @@ public class TcpServer
         
         
         IDCounter++;
+    }
+    
+    private String getRngWeather()
+    {
+        String[] weather = {
+            "Sunny",
+            "Rainy",
+            "Grey",
+            "Cold",
+            "Hot",
+            "Apocalyptic"
+        };
+        Random r = new Random();
+        return weather[r.nextInt(weather.length)];
     }
     
    

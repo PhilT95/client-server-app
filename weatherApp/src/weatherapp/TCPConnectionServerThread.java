@@ -29,8 +29,8 @@ public class TCPConnectionServerThread implements Runnable
             
             try
             {
-                connection.recieveMessage();
-                connection.sendMessage("SERVER RECIEVED MESSAGE");
+                String tmp = connection.recieveMessage();
+                connection.sendMessage("The weather is " + tmp);
             }catch(IOException ex)
             {
                 return;
